@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sky Runner — Deluxe</title>
+  <link rel="stylesheet" href="style.css" />
+  <meta name="description" content="A polished, feature-rich T-Rex style runner with double jump, slide, coins, power-ups, day/night, and local leaderboard."/>
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <h1>Sky Runner <span class="badge">Deluxe</span></h1>
+      <div class="ui">
+        <span id="score" aria-live="polite">Score: 0</span>
+        <span id="coins" aria-live="polite">🪙 0</span>
+        <span id="best" aria-live="polite">Best: 0</span>
+        <div class="toggles">
+          <button id="themeBtn" aria-label="Toggle Theme">🌗</button>
+          <button id="soundBtn" aria-label="Toggle Sound">🔊</button>
+          <button id="pauseBtn" aria-label="Pause / Resume">⏸</button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <canvas id="game" width="800" height="300" aria-label="Jumping game canvas"></canvas>
+      <div id="hint">
+        <span>Jump: <kbd>Space</kbd>/<kbd>↑</kbd> • Double-Jump: press again mid-air • Slide: <kbd>↓</kbd>/<kbd>S</kbd> (hold)</span>
+        <span>Pause: <kbd>P</kbd> • Restart: <kbd>R</kbd>/<kbd>Enter</kbd> • Sound: <kbd>M</kbd> • Tap buttons on mobile.</span>
+      </div>
+
+      <!-- On-screen mobile controls -->
+      <div class="hud">
+        <button id="btnJump" class="hud-btn" aria-label="Jump">Jump</button>
+        <button id="btnSlide" class="hud-btn" aria-label="Slide">Slide</button>
+      </div>
+    </main>
+
+    <footer class="foot">
+      <small>Built with HTML, CSS, and JavaScript — Gözde • New features: double jump, slide/duck, birds, coins, shield, day/night, parallax, pause, sound toggle, local leaderboard.</small>
+    </footer>
+  </div>
+
+  <!-- Overlay -->
+  <div id="overlay" class="hidden" role="dialog" aria-modal="true">
+    <div class="panel">
+      <h2 id="stateTitle">Paused</h2>
+      <p id="stateMsg">Press <strong>R</strong> to restart or <strong>P</strong> to continue.</p>
+      <div class="panel-grid">
+        <div>
+          <h3>Top Scores</h3>
+          <ol id="board" class="board"></ol>
+        </div>
+        <div>
+          <h3>Achievements</h3>
+          <ul id="achievements" class="ach"></ul>
+        </div>
+      </div>
+      <div class="panel-actions">
+        <button id="restartBtn">Restart</button>
+        <button id="continueBtn">Continue</button>
+        <button id="shareBtn" title="Copy result to clipboard">Share</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
